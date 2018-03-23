@@ -10,14 +10,14 @@ import java.io.IOException;
 import java.net.*;
 
 
-public class Server implements Runnable {
+public class WPS implements Runnable {
 
 	private int port;
 	private InetAddress address;
 	private DatagramSocket server;
 	// Socket socket;
 
-	public Server(int port, String address) throws IOException {
+	public WPS(int port, String address) throws IOException {
 		this.port = port;
 
 		try {
@@ -53,11 +53,10 @@ public class Server implements Runnable {
 			HttpResponse response = HttpUtil.request("get", url);
 
 			returnMessage = response.getHeader();
+			System.out.println("Returning headers of request");
 		} catch (Exception e) {
-			returnMessage = e.getMessage();
+			returnMessage = "Error: invalid url";
 		}
-
-		System.out.println("Returning headers of request");
 
 
 		UdpUtil.sendMessage(returnMessage, packet.getAddress(), packet.getPort(), server);

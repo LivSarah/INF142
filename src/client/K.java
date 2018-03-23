@@ -8,14 +8,14 @@ import static util.UdpUtil.getPacket;
 import static util.UdpUtil.sendMessage;
 
 
-public class Client implements Runnable {
+public class K implements Runnable {
 	//Feltvariabler
 	private int port;
 	private InetAddress adresse;
 	private DatagramSocket client;
 
 	//Konstruktør
-	public Client(int port, String address) {
+	public K(int port, String address) {
 		this.port = port;
 
 		try {
@@ -49,6 +49,8 @@ public class Client implements Runnable {
 
 		DatagramPacket packet = getPacket(client);
 		msg = getMessage(packet);
+		System.out.println();
+		System.out.println("Beskjed fra server: ");
 		System.out.println(msg);
 
 		client.close();

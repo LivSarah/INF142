@@ -33,7 +33,7 @@ public class HttpUtil {
 			throw new Exception("Invalid url");
 		}
 
-		Socket requestSocket = new Socket(InetAddress.getByName(url), 80);
+		Socket requestSocket = new Socket(InetAddress.getByName(host), 80);
 		PrintWriter tcpBody = new PrintWriter(requestSocket.getOutputStream());
 
 		// Write http request line
